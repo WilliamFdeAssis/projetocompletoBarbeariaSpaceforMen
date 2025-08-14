@@ -17,8 +17,8 @@ class Cliente {
     // Método para salvar o cliente no banco de dados
   salvar() {
     return db.promise().execute(
-      `INSERT INTO clientes 
-        (nome_sobrenome, email, telefone, mensagem, contato, opcao, novidade_email) 
+      `INSERT INTO cliente 
+        (nomeSobrenome, email, telefone, mensagem, contato, opcao, novidadeEmail) 
        VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         this.nomeSobrenome,
