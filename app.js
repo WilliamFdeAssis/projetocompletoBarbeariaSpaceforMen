@@ -21,6 +21,8 @@ const clientesRouter = require('./router/clientes');
 //usando as rotas do cliente
 app.use('/clientes', clientesRouter);
 
+//middleware para arquivos estaticos
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
