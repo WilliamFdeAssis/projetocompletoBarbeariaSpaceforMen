@@ -2,6 +2,7 @@
 require('dotenv').config({path:'variaveis.env'});
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 
 // importando a conexão com o banco de dados
@@ -14,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
+    //middleware para arquivos estaticos
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 // importando as rotas do cliente
 const clientesRouter = require('./router/clientes');
@@ -21,8 +25,7 @@ const clientesRouter = require('./router/clientes');
 //usando as rotas do cliente
 app.use('/clientes', clientesRouter);
 
-//middleware para arquivos estaticos
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 
@@ -31,8 +34,9 @@ app.listen(process.env.PORT, ()=>{
     console.log(`Servidor rodando em: http://localhost:${process.env.PORT}`)
 });
 
+/*
 
 // testando a configuração do servidor
 app.get('/', (req, res) => {
     res.send('Servidor está funcionando corretamente!');
-});
+}); */
