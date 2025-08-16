@@ -21,6 +21,16 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+//Rota para minha página produto.html
+router.get('/produto', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/produto.html'));
+});
+
+//Rota para minha página contato.html
+router.get('/contato', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/contato.html'));
+});
+
 module.exports = router;
 
 
