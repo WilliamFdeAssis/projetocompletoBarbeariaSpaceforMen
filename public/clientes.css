@@ -36,6 +36,61 @@ nav a:hover{
     text-decoration: underline;
 }
 
+/* Área principal */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Títulos */
+main h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Tabela de clientes */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table thead {
+  background: #333;
+  color: #fff;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table tr:hover {
+  background: #f9f9f9;
+}
+
+/* Links de ação (editar/deletar) */
+td a {
+  text-decoration: none;
+  font-size: 14px;
+  margin: 0 5px;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+td a:first-child { color: #007bff; } /* editar */
+td a:last-child { color: #dc3545; } /* deletar */
+
+
 
 
 footer{
