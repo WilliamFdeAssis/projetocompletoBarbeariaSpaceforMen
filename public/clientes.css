@@ -36,17 +36,20 @@ nav a:hover{
     text-decoration: underline;
 }
 
+
+
+
 /* Área principal */
 main {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px 30px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Títulos */
+/* Título */
 main h2 {
   text-align: center;
   font-size: 28px;
@@ -54,11 +57,16 @@ main h2 {
   color: #333;
 }
 
-/* Tabela de clientes */
+/* Container para rolagem em telas pequenas */
+.tabela-container {
+  overflow-x: auto;
+}
+
+/* Tabela */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  min-width: 900px;
 }
 
 table thead {
@@ -67,30 +75,53 @@ table thead {
 }
 
 table th, table td {
-  padding: 12px;
+  padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  vertical-align: middle;
 }
 
 table tr:hover {
   background: #f9f9f9;
 }
 
-/* Links de ação (editar/deletar) */
-td a {
-  text-decoration: none;
+/* Evitar quebra de linha em certos campos */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Coluna de ações */
+.acoes {
+  display: flex;
+  gap: 8px;
+}
+
+/* Botões */
+.btn {
+  padding: 6px 14px;
+  border-radius: 6px;
   font-size: 14px;
-  margin: 0 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-td a:hover {
-  text-decoration: underline;
+.btn.editar {
+  background-color: #007bff;
+  color: white;
 }
 
-td a:first-child { color: #007bff; } /* editar */
-td a:last-child { color: #dc3545; } /* deletar */
+.btn.deletar {
+  background-color: #dc3545;
+  color: white;
+}
 
-
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
 
 
 footer{
@@ -104,4 +135,41 @@ footer{
     color: #ffffff;
     font-size: 13px;
     margin: 20px 0 0;
+}
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  table thead {
+    display: none;
+  }
+
+  table, table tbody, table tr, table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
 }

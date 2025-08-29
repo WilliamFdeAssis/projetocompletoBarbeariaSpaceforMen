@@ -8,8 +8,8 @@
     <meta name="description" content="Página de clientes cadastrados da Barbearia Space for Men">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="clientes.css">
     <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="clientes.css">
 </head>
 <body>
 
@@ -31,13 +31,12 @@
         </div>
     </header>
 
-    <!-- conteudo principal -->
+   <!-- conteúdo principal -->
+<main>
+    <h2>Clientes Cadastrados</h2>
 
-    <main>
-
-        <h2>Clientes Cadastrados</h2>
-
-        <table border="1" cellpadding="10" cellspacing="0">
+     <div class="tabela-container">
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -46,58 +45,52 @@
                     <th>Telefone</th>
                     <th>Mensagem</th>
                     <th>Contato</th>
-                    <th>Opções</th>
+                    <th>Horário Preferido</th>
+                    <th>Ações</th>
                     <th>Novidade por Email</th>
-
                 </tr>
             </thead>
             <tbody id="tabela-clientes">
-
-                <!-- Os dados dos clientes serão inseridos aqui via JavaScript -->
-
-
-               <tr>
-                   <td>1</td>
-                   <td>João da Silva</td>
-                   <td>joao@example.com</td>
-                   <td>(11) 98765-4321</td>
-                   <td>Gostaria de saber mais sobre os produtos.</td>
-                   <td>WhatsApp</td>
-                   <td>
-                       <button>Editar</button>
-                       <button>Excluir</button>
-                   </td>
-                   <td>
-                       <input type="checkbox" checked>
-                   </td>
-               </tr>
-               <tr>
-                   <td>2</td>
-                   <td>Maria Oliveira</td>
-                   <td>maria@example.com</td>
-                   <td>(11) 91234-5678</td>
-                   <td>Estou interessada em agendar um horário.</td>
-                   <td>Telefone</td>
-                   <td>
-                       <button>Editar</button>
-                       <button>Excluir</button>
-                   </td>
-                   <td>
-                       <input type="checkbox">
-                   </td>
-               </tr>
+                <!-- Exemplo de dados fixos -->
+                <tr>
+                    <td>1</td>
+                    <td>João da Silva</td>
+                    <td>joao@example.com</td>
+                    <td class="nowrap">(11) 98765-4321</td>
+                    <td>Gostaria de saber mais sobre os produtos.</td>
+                    <td>WhatsApp</td>
+                    <td>Tarde</td>
+                    <td class="acoes">
+                        <button class="btn editar">Editar</button>
+                        <button class="btn deletar">Excluir</button>
+                    </td>
+                    <td><input type="checkbox" checked></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Maria Oliveira</td>
+                    <td>maria@example.com</td>
+                    <td class="nowrap">(11) 91234-5678</td>
+                    <td>Estou interessada em agendar um horário.</td>
+                    <td>Telefone</td>
+                    <td>Manhã</td>
+                    <td class="acoes">
+                        <button class="btn editar">Editar</button>
+                        <button class="btn deletar">Excluir</button>
+                    </td>
+                    <td><input type="checkbox"></td>
+                </tr>
             </tbody>
         </table>
+    </div>
+</main>
 
-    </main>
-
-
-   
-      <footer>
+   <footer>
         <img src="./img/logo-branco.png" alt="logo-branco">
          <p  class="copyright">&copy;Copyright Barbearia Space for men</p>
 
     </footer>
 
+    <script src="clientes.js"></script>
 </body>
 </html>
