@@ -1,27 +1,29 @@
-fetch('clientes.json')
-    .then(response => response.json())
-    .then(data => {
-        const tabelaClientes = document.getElementById('tabela-clientes');
-        data.forEach(cliente => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${cliente.id}</td>
-                <td>${cliente.nome}</td>
-                <td>${cliente.email}</td>
-                <td>${cliente.telefone}</td>
-                <td>${cliente.mensagem}</td>
-                <td>${cliente.contato}</td>
-                <td>${cliente.opcoes}</td>
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/clientes/listar")
+        .then(response => response.json())
+        .then(clientes => {
+            const tabela = document.getElementById("tabela-clientes");
+            tabela.innerHTML = "";
 
-                <td>
-                    <button>Editar</button>
-                    <button>Excluir</button>
-                </td>
-                <td>
-                    <input type="checkbox" ${cliente.novidade ? 'checked' : ''}>
-                </td>
-            `;
-            tabelaClientes.appendChild(row);
-        });
-    })
-    .catch(error => console.error('Erro ao carregar os dados dos clientes:', error));
+            clientes.forEach(cliente => {
+                const row = `
+                    <tr>
+                        <td>${cliente.id}</td>
+                        <td>${cliente.nomeSobrenome}</td>
+                        <td>${cliente.email}</td>
+                        <td class="nowrap">${cliente.telefone}</td>
+                        <td>${cliente.mensagem}</td>
+                        <td>${cliente.contato}</td>
+                        <td>${cliente.opcao}</td>
+                        <td class="acoes">
+                            <button class="btn editar">Editar</button>
+                            <button class="btn deletar">Excluir</button>
+                        </td>
+                        <td><input type="checkbox" ${cliente.novidadeEmail ? "checked" : ""}></td>
+                    </tr>
+                `;
+                tabela.innerHTML += row;
+            });
+        })
+        .catch(err => console.error("Erro ao carregar clientes:", err));
+});

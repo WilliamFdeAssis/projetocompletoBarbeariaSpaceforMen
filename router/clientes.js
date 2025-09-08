@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const Cliente = require('../models/Cliente');
 
 // Rota para inserir um novo cliente
@@ -15,6 +16,15 @@ router.post('/cadastrar', (req, res) => {
         .then(() => res.send('Cliente cadastrado com sucesso!'))
         .catch(err => res.status(500).send('Erro ao cadastrar cliente: ' + err));
 });
+
+
+// Rota para listar todos os clientes utilizando fetch
+router.get('/listar', (req, res) => {
+  Cliente.listar()
+    .then(clientes => res.json(clientes)) // agora já é um array simples
+    .catch(err => res.status(500).send('Erro ao listar clientes: ' + err));
+});
+
 
 //Rota para minha página index.html
 router.get('/', (req, res) => {

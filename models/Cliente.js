@@ -32,6 +32,16 @@ class Cliente {
     );
   }
 
+
+
+// Método para listar todos os clientes
+static listar() {
+  return db.promise()
+    .query(`SELECT * FROM cliente`)
+    .then(([rows]) => rows); // pega só os dados, ignora "fields"
+}
+
+  
 }
 
 module.exports = Cliente;
