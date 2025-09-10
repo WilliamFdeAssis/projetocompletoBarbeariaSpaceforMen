@@ -41,6 +41,11 @@ static listar() {
     .then(([rows]) => rows); // pega só os dados, ignora "fields"
 }
 
+// Método para excluir um cliente pelo ID
+ static excluir(id) {
+  return db.promise().execute("DELETE FROM cliente WHERE id = ?", [id]);
+}
+
   
 }
 
