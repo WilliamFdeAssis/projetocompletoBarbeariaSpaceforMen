@@ -46,7 +46,23 @@ static listar() {
   return db.promise().execute("DELETE FROM cliente WHERE id = ?", [id]);
 }
 
+// Método para buscar um cliente pelo ID
+static buscarPorId(id) {
+  return db.promise()
+    .query("SELECT * FROM cliente WHERE id = ?", [id])
+    .then(([rows]) => rows[0]); // retorna o primeiro resultado ou seja só um cliente
   
 }
+
+// Método para buscar um cliente pelo nome
+static buscarPorNome(nomeSobrenome) {
+  return db.promise()
+    .query("SELECT * FROM cliente WHERE nomeSobrenome LIKE ?", [`%${nomeSobrenome}%`])
+    .then(([rows]) => rows); // retorna todos os resultados que correspondem ao nome
+
+}
+
+}
+
 
 module.exports = Cliente;
