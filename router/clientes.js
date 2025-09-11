@@ -25,6 +25,37 @@ router.get('/listar', (req, res) => {
     .catch(err => res.status(500).send('Erro ao listar clientes: ' + err));
 });
 
+
+//rota de busca de cliente por id
+router.get('/buscar/:id', (req, res) => {
+  const id = req.params.id;
+
+  Cliente.buscarPorId(id)
+    .then(cliente => {
+      if (cliente) {
+        res.json(cliente);
+      } else {
+        res.status(404).send('Cliente não encontrado');
+      }
+    })
+    .catch(err => res.status(500).send('Erro ao buscar cliente: ' + err));
+});
+
+//rota de busca de cliente por nome
+router.get('/buscar/nome/:nomeSobrenome', (req, res) => {
+  const nomeSobrenome = req.params.nomeSobrenome;
+
+  Cliente.buscarPorNome(nomeSobrenome)
+    .then(cliente => {
+      if (cliente) {
+        res.json(cliente);
+      } else {
+        res.status(404).send('Cliente não encontrado');
+      }
+    })
+    .catch(err => res.status(500).send('Erro ao buscar cliente: ' + err));
+});
+
 //rota para excluir cliente
 router.delete('/excluir/:id', (req, res) => {
   const id = req.params.id;
@@ -33,6 +64,8 @@ router.delete('/excluir/:id', (req, res) => {
     .then(() => res.send("Cliente excluído com sucesso!"))
     .catch(err => res.status(500).send("Erro ao excluir cliente: " + err));
 });
+
+
 
 
 //Rota para minha página index.html
