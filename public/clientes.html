@@ -33,7 +33,31 @@
 
    <!-- conteúdo principal -->
 <main>
-        <h2>Clientes Cadastrados</h2>
+        <h2>Gerenciamento de Clientes</h2>
+
+
+        <!-- 🔎 Área de busca -->
+
+        <section id="busca">
+
+            <div class="campo-busca">
+                <label for="id">Buscar por ID</label>
+                <input type="number" id="id" name="id">
+                <button class="btn buscar" onclick="buscarPorId()">Buscar</button>
+            </div>
+
+            <div class="campo-busca">
+                <label for="nome">Buscar por Nome</label>
+                <input type="text" id="nome" name="nome">
+                <button class="btn buscar" onclick="buscarPorNome()">Buscar</button>
+            </div>
+
+            <div class="campo-busca">
+                <button class="btn mostrar-todos" onclick="carregarClientes()">🔄Mostrar Todos</button>
+            </div>
+
+        </section>
+
 
         <div class="tabela-container">
             <table>

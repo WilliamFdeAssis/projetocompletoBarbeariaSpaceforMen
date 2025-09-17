@@ -1,39 +1,39 @@
-header{
-    background-color:#bbbbbb;
-    padding: 20px 0;
+header {
+  background-color: #bbbbbb;
+  padding: 20px 0;
 
 }
 
-.caixa{
-    width:940px;
-    position: relative;
-    margin: 0 auto;
+.caixa {
+  width: 940px;
+  position: relative;
+  margin: 0 auto;
 }
 
 
-nav{
+nav {
 
-    position:absolute ;
-    top: 126px;
-    right:0;
+  position: absolute;
+  top: 126px;
+  right: 0;
 }
 
-nav li{
-    display:inline ;
-    margin: 0 0 0 15px;
+nav li {
+  display: inline;
+  margin: 0 0 0 15px;
 }
 
-nav a{
-    text-transform:uppercase;
-    color: #000000;
-    font-weight:bold ;
-    font-size: 22px;
-    text-decoration: none;
+nav a {
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration: none;
 }
 
-nav a:hover{
-    color: #c78c19;
-    text-decoration: underline;
+nav a:hover {
+  color: #c78c19;
+  text-decoration: underline;
 }
 
 
@@ -46,7 +46,7 @@ main {
   padding: 20px 30px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Título */
@@ -123,18 +123,74 @@ table tr:hover {
   transform: scale(1.05);
 }
 
+/* area de busca */
 
-footer{
-    text-align: center;
-    background: url(./img/bg.jpg);
-    padding: 40px 0;
-    
+#busca {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 25px;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.copyright{
-    color: #ffffff;
-    font-size: 13px;
-    margin: 20px 0 0;
+.campo-busca {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* espaçamento especial para o último bloco (opcional) */
+.campo-busca:last-child {
+  align-self: center;
+}
+
+#busca label {
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+#busca input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 220px;
+  /* opcional: substitua por min-width/flex para responsividade */
+}
+
+/* botões */
+.btn.buscar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn.mostrar-todos {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+/* foco acessível */
+#busca input:focus {
+  outline: 3px solid rgba(0, 123, 255, 0.15);
+}
+
+
+footer {
+  text-align: center;
+  background: url(./img/bg.jpg);
+  padding: 40px 0;
+
+}
+
+.copyright {
+  color: #ffffff;
+  font-size: 13px;
+  margin: 20px 0 0;
 }
 
 
@@ -171,5 +227,14 @@ footer{
     padding-right: 10px;
     font-weight: bold;
     text-align: left;
+  }
+
+  #busca {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #busca input {
+    width: 100%;
   }
 }
