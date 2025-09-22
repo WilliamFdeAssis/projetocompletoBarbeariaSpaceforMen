@@ -29,22 +29,42 @@ function preencherTabela(clientes) {
       <td><input type="checkbox" ${cliente.novidadeEmail ? "checked" : ""}></td>
     `;
 
+    
     // 🔹 Adiciona evento de excluir em todos os clientes
-    const btnExcluir = row.querySelector(".deletar");
-    btnExcluir.addEventListener("click", () => {
-      if (confirm(`Tem certeza que deseja excluir o cliente ${cliente.nomeSobrenome}?`)) {
-        fetch(`/clientes/excluir/${cliente.id}`, { method: "DELETE" })
-          .then(res => {
-            if (res.ok) {
-              alert("Cliente excluído com sucesso!");
-              row.remove();
-            } else {
-              alert("Erro ao excluir cliente.");
-            }
-          })
-          .catch(err => console.error("Erro na exclusão:", err));
-      }
-    });
+
+// 1. Seleciona o botão "Excluir" dentro da linha (row) do cliente
+const btnExcluir = row.querySelector(".deletar");
+
+// 2. Adiciona um "ouvinte" de evento de clique no botão Excluir
+btnExcluir.addEventListener("click", () => {
+
+  // 3. Mostra uma caixa de confirmação antes de excluir
+  //    O nome do cliente aparece na mensagem para evitar exclusão acidental
+  if (confirm(`Tem certeza que deseja excluir o cliente ${cliente.nomeSobrenome}?`)) {
+
+    // 4. Faz uma requisição HTTP DELETE para o backend
+    //    A rota "/clientes/excluir/:id" vai excluir o cliente pelo ID
+    fetch(`/clientes/excluir/${cliente.id}`, { method: "DELETE" })
+
+      // 5. Quando a resposta voltar, verificamos se deu certo
+      .then(res => {
+        if (res.ok) {
+          // 5.1. Se o servidor respondeu OK, mostra mensagem de sucesso
+          alert("Cliente excluído com sucesso!");
+
+          // 5.2. Remove a linha da tabela no navegador, sem precisar recarregar a página
+          row.remove();
+        } else {
+          // 5.3. Se deu erro no servidor, mostra aviso ao usuário
+          alert("Erro ao excluir cliente.");
+        }
+      })
+
+      // 6. Caso aconteça algum erro inesperado na requisição, mostramos no console
+      .catch(err => console.error("Erro na exclusão:", err));
+  }
+});
+
 
     tabela.appendChild(row);
   });
