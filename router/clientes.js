@@ -13,7 +13,7 @@ router.post('/cadastrar', (req, res) => {
     const cliente = new Cliente(nomeSobrenome, email, telefone, mensagem, contato, opcao, novidadeEmail);
 
     cliente.salvar()
-        .then(() => res.send('Cliente cadastrado com sucesso!'))
+        .then(() => res.redirect('/contato.html')) // redireciona para a página de contato após o cadastro
         .catch(err => res.status(500).send('Erro ao cadastrar cliente: ' + err));
 });
 
