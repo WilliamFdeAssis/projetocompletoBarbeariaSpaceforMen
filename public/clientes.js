@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Erro ao carregar clientes:", err));
 });
 
-
 /* Função para preencher tabela de clientes */
 function preencherTabela(clientes) {
   const tabela = document.getElementById("tabela-clientes");
@@ -29,6 +28,23 @@ function preencherTabela(clientes) {
       </td>
       <td><input type="checkbox" ${cliente.novidadeEmail ? "checked" : ""}></td>
     `;
+
+    // 🔹 Adiciona evento de excluir em todos os clientes
+    const btnExcluir = row.querySelector(".deletar");
+    btnExcluir.addEventListener("click", () => {
+      if (confirm(`Tem certeza que deseja excluir o cliente ${cliente.nomeSobrenome}?`)) {
+        fetch(`/clientes/excluir/${cliente.id}`, { method: "DELETE" })
+          .then(res => {
+            if (res.ok) {
+              alert("Cliente excluído com sucesso!");
+              row.remove();
+            } else {
+              alert("Erro ao excluir cliente.");
+            }
+          })
+          .catch(err => console.error("Erro na exclusão:", err));
+      }
+    });
 
     tabela.appendChild(row);
   });
