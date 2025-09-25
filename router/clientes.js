@@ -65,7 +65,16 @@ router.delete('/excluir/:id', (req, res) => {
     .catch(err => res.status(500).send("Erro ao excluir cliente: " + err));
 });
 
+// rota para atualizar cliente
+router.put('/editar/:id', (req, res) => {
+  const id = req.params.id;
+  const { nomeSobrenome, email, telefone, mensagem, contato, opcao, novidadeEmail } = req.body;
 
+  Cliente.atualizar(id, { nomeSobrenome, email, telefone, mensagem, contato, opcao, novidadeEmail })
+    .then(() => res.send("Cliente atualizado com sucesso!"))
+    .catch(err => res.status(500).send("Erro ao atualizar cliente: " + err));
+
+});
 
 
 //Rota para minha página index.html
