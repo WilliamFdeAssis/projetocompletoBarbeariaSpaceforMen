@@ -62,7 +62,26 @@ static buscarPorNome(nomeSobrenome) {
 
 }
 
+ // Método para atualizar um cliente pelo ID
+static atualizar(id, dadosAtualizados) {
+  const { nomeSobrenome, email, telefone, mensagem, contato, opcao, novidadeEmail } = dadosAtualizados;
+  return db.promise().execute(
+    `UPDATE cliente SET 
+       nomeSobrenome = ?, email = ?, telefone = ?, mensagem = ?, contato = ?, opcao = ?, novidadeEmail = ? 
+     WHERE id = ?`,
+    [
+      nomeSobrenome,
+      email,
+      telefone,
+      mensagem,
+      contato,
+      opcao,
+      novidadeEmail ? 1 : 0,
+      id
+    ]
+  );
 }
 
+}
 
 module.exports = Cliente;

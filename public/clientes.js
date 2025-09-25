@@ -28,8 +28,7 @@ function preencherTabela(clientes) {
       </td>
       <td><input type="checkbox" ${cliente.novidadeEmail ? "checked" : ""}></td>
     `;
-
-    
+ 
     // 🔹 Adiciona evento de excluir em todos os clientes
 
 // 1. Seleciona o botão "Excluir" dentro da linha (row) do cliente
@@ -69,3 +68,4 @@ btnExcluir.addEventListener("click", () => {
     tabela.appendChild(row);
   });
 }
+            
