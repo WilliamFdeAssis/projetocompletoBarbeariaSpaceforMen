@@ -65,7 +65,73 @@ btnExcluir.addEventListener("click", () => {
 });
 
 
+ // 🔹 Adiciona evento de editar em todos os clientes
+const btnEditar = row.querySelector(".editar");
+btnEditar.addEventListener("click", () => {
+
+  // 1. Preenche os campos de edição com os dados do cliente
+  document.getElementById("edit-id").value = clientes.id;
+  document.getElementById("edit-nome").value = clientes.nomeSobrenome;
+  document.getElementById("edit-email").value = clientes.email;
+  document.getElementById("edit-telefone").value = clientes.telefone;
+  document.getElementById("edit-mensagem").value = clientes.mensagem;
+  document.getElementById("edit-contato").value = clientes.contato;
+  document.getElementById("edit-opcao").value = clientes.opcao;
+  document.getElementById("edit-novidade").checked = clientes.novidadeEmail;
+
+  // 2. Mostra o formulário de edição (que estava oculto no HTML)
+  document.getElementById("form-editar").style.display = "block";
+});
+
+// 🔹 Captura envio do formulário de edição
+document.getElementById("form-editar").addEventListener("submit", (e) => {
+  e.preventDefault(); // evita recarregar a página
+
+  // 3. Pega os valores que o usuário alterou
+  const id = document.getElementById("edit-id").value;
+  const nomeSobrenome = document.getElementById("edit-nome").value;
+  const email = document.getElementById("edit-email").value;
+  const telefone = document.getElementById("edit-telefone").value;
+  const mensagem = document.getElementById("edit-mensagem").value;
+  const contato = document.getElementById("edit-contato").value;
+  const opcao = document.getElementById("edit-opcao").value;
+  const novidadeEmail = document.getElementById("edit-novidade").checked;
+
+  // 4. Envia atualização para o backend
+  fetch(`/clientes/editar/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      nomeSobrenome,
+      email,
+      telefone,
+      mensagem,
+      contato,
+      opcao,
+      novidadeEmail
+    })
+  })
+    .then(res => {
+      if (res.ok) {
+        alert("Cliente atualizado com sucesso!");
+        document.getElementById("form-editar").reset();
+        document.getElementById("form-editar").style.display = "none";
+
+        // Opcional: recarregar lista para refletir alterações
+        return fetch("/clientes/listar")
+          .then(r => r.json())
+          .then(clientes => preencherTabela(clientes));
+      } else {
+        alert("Erro ao atualizar cliente.");
+      }
+    })
+    .catch(err => console.error("Erro na atualização:", err));
+});
+
+
     tabela.appendChild(row);
   });
+
+ 
 }
             
