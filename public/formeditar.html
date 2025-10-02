@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Edição</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="formeditar.css">
+</head>
+<body>
+
+  <h1>Editar Cliente</h1>
+
+  <!-- Formulário de edição -->
+  <form id="form-editar">
+    <input type="hidden" id="edit-id">
+
+    <label for="edit-nome">Nome e Sobrenome:</label>
+    <input type="text" id="edit-nome" required>
+
+    <label for="edit-email">E-mail:</label>
+    <input type="email" id="edit-email" required>
+
+    <label for="edit-telefone">Telefone:</label>
+    <input type="text" id="edit-telefone">
+
+    <label for="edit-mensagem">Mensagem:</label>
+    <textarea id="edit-mensagem"></textarea>
+
+    <label for="edit-contato">Forma de Contato:</label>
+    <select id="edit-contato">
+      <option value="email">E-mail</option>
+      <option value="telefone">Telefone</option>
+      <option value="whatsapp">WhatsApp</option>
+    </select>
+
+    <label for="edit-opcao">Horário de preferência:</label>
+    <input type="text" id="edit-opcao">
+
+   
+    
+
+    <label for="edit-novidade"><input type="checkbox" id="edit-novidade">Receber novidades por e-mail</label>
+    
+    
+    <div class="acoes">
+      <button type="submit" class="salvar">Salvar Alterações</button>
+      <button type="button" class="cancelar" onclick="window.location.href='/clientes.html'">Cancelar</button>
+    </div>
+
+  </form>
+
+<script src="/clientes.js"></script>
+
+
+</body>
+</html>
