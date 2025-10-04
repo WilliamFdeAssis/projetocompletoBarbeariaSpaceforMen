@@ -25,6 +25,24 @@ function buscarPorId() {
 }
 
 
+ /* Buscar clientes por Nome */
+function buscarPorNome() {
+  const nome = document.getElementById("nome").value.trim();
+  if (!nome) {
+    alert("Digite um nome válido!");
+    return;
+  }
+
+  fetch(`/clientes/buscar/nome/${nome}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Nenhum cliente encontrado com esse nome");
+      return res.json();
+    })
+    .then(clientes => preencherTabela(clientes)) // ✅ reaproveita
+    .catch(err => alert(err.message));
+}
+
+
 
 /* Função para preencher tabela de clientes */
 function preencherTabela(clientes) {
