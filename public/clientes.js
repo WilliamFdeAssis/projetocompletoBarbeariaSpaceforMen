@@ -7,6 +7,23 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Erro ao carregar clientes:", err));
 });
 
+/* Buscar cliente por ID */
+function buscarPorId() {
+  const id = document.getElementById("id").value;
+  if (!id) {
+    alert("Digite um ID válido!");
+    return;
+  }
+
+  fetch(`/clientes/buscar/${id}`)
+    .then(res => {
+      if (!res.ok) throw new Error("Cliente não encontrado");
+      return res.json();
+    })
+    .then(cliente => preencherTabela([cliente])) // ✅ reaproveita
+    .catch(err => alert(err.message));
+}
+
 
 
 /* Função para preencher tabela de clientes */

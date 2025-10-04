@@ -82,6 +82,6 @@ static atualizar(id, dadosAtualizados) {
   );
 }
 
-}
+}                     
 
 module.exports = Cliente;
