@@ -42,6 +42,15 @@ function buscarPorNome() {
     .catch(err => alert(err.message));
 }
 
+// 🔄 Função para buscar todos os clientes
+function carregarClientes() {
+  fetch("/clientes/listar")
+    .then(response => response.json())
+    .then(clientes => preencherTabela(clientes))
+    .catch(err => console.error("Erro ao carregar clientes:", err));
+}
+
+
 
 
 /* Função para preencher tabela de clientes */
